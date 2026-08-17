@@ -1,0 +1,44 @@
+{% extends 'base.html' %}{% block content %}
+<p class="eyebrow">ADMIN CONSOLE</p>
+<h1>Reports</h1>
+<section class="reports">
+  <form method="get" class="card filter">
+    <h2>Daily activity</h2>
+    <label>Date<input type="date" name="day" value="{{ day }}" /></label
+    ><button>View report</button>
+  </form>
+  <div class="card metric">
+    <span>Unique players</span><strong>{{ daily.users or 0 }}</strong>
+  </div>
+  <div class="card metric">
+    <span>Correct guesses</span><strong>{{ daily.wins or 0 }}</strong>
+  </div>
+</section>
+<section class="card player-report">
+  <h2>Player report</h2>
+  {% if players %}
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Words tried</th>
+        <th>Correct guesses</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in players %}
+      <tr>
+        <td>{{ row.username }}</td>
+        <td>{{ row.started_on }}</td>
+        <td>{{ row.tried }}</td>
+        <td>{{ row.wins }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No player games yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

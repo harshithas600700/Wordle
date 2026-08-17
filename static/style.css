@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono&family=Outfit:wght@400;500;600;700&display=swap");
+:root {
+  --ink: #11211e;
+  --paper: #f6f4ec;
+  --lime: #c7e538;
+  --orange: #e6a23c;
+  --gray: #66716d;
+  --line: #d7d9ce;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Outfit, sans-serif;
+}
+nav {
+  max-width: 1000px;
+  margin: auto;
+  padding: 24px 28px;
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+nav span {
+  margin-left: auto;
+}
+a {
+  color: inherit;
+}
+.brand {
+  font-weight: 700;
+  letter-spacing: -1px;
+  text-decoration: none;
+  font-size: 20px;
+}
+main {
+  max-width: 1000px;
+  margin: 56px auto;
+  padding: 0 28px;
+}
+.eyebrow {
+  font: 12px "DM Mono", monospace;
+  letter-spacing: 1.4px;
+  color: #557164;
+  margin: 0 0 10px;
+}
+h1 {
+  font-size: clamp(42px, 7vw, 74px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+  margin: 0 0 16px;
+}
+h2 {
+  margin-top: 0;
+}
+button {
+  border: 0;
+  background: var(--ink);
+  color: white;
+  font: 600 15px Outfit;
+  padding: 13px 19px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background: #25443b;
+}
+label {
+  display: grid;
+  gap: 7px;
+  font-weight: 600;
+}
+input {
+  padding: 12px;
+  border: 1px solid #b7bbb2;
+  background: white;
+  border-radius: 4px;
+  font: 16px Outfit;
+}
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 5px 5px 0 #dce3c9;
+}
+.auth {
+  max-width: 440px;
+  margin: 80px auto;
+}
+.auth form,
+.filter {
+  display: grid;
+  gap: 17px;
+}
+.hint {
+  font-size: 13px;
+  color: #59645f;
+}
+.flash {
+  padding: 13px 16px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.flash.success {
+  background: #dceeb7;
+}
+.flash.error {
+  background: #f6d7ce;
+}
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 50px;
+}
+.counter {
+  font: 42px "DM Mono", monospace;
+  color: #6a7c72;
+}
+.counter span {
+  display: block;
+  font: 12px "DM Mono", monospace;
+}
+.game {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 64px;
+  align-items: start;
+}
+.board {
+  display: grid;
+  gap: 7px;
+  width: min(100%, 390px);
+}
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+.tile {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  background: white;
+  border: 1px solid #d3d6ce;
+  font-weight: 700;
+  font-size: 26px;
+  border-radius: 3px;
+}
+.tile.correct {
+  background: #72b265;
+  border-color: #72b265;
+  color: white;
+}
+.tile.present {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: white;
+}
+.tile.absent {
+  background: #77807e;
+  border-color: #77807e;
+  color: white;
+}
+.guess {
+  display: grid;
+  gap: 14px;
+}
+.guess input {
+  text-transform: uppercase;
+  letter-spacing: 6px;
+}
+.end-game {
+  display: grid;
+  gap: 14px;
+}
+.end-game .flash {
+  margin-bottom: 0;
+}
+.start {
+  max-width: 500px;
+}
+.reports {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 18px;
+  margin: 28px 0;
+}
+.metric strong {
+  font: 50px "DM Mono", monospace;
+  display: block;
+  margin-top: 20px;
+}
+.player-report form {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+.player-report label {
+  flex: 1;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+@media (max-width: 650px) {
+  main {
+    margin: 30px auto;
+  }
+  .hero {
+    display: block;
+  }
+  .counter {
+    margin-top: 25px;
+  }
+  .game,
+  .reports {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+  .board {
+    width: 100%;
+  }
+  .player-report form {
+    display: grid;
+  }
+  .tile {
+    font-size: 22px;
+  }
+}

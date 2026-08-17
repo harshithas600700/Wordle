@@ -1,0 +1,72 @@
+{% extends 'base.html' %}{% block content %}
+<div class="hero">
+  <div>
+    <p class="eyebrow">DAILY WORD GAME</p>
+    <h1>Think in five.</h1>
+    <p>Find the secret five-letter word in five tries.</p>
+  </div>
+  <div class="counter">{{ games_today }} <span>/ 3 games today</span></div>
+</div>
+{% if game %}
+<section class="game">
+  <div class="board">
+    {% for guess,states in rows %}
+    <div class="row">
+      {% for char,state in zip(guess,states) %}<span class="tile {{ state }}"
+        >{{ char }}</span
+      >{% endfor %}
+    </div>
+    {% endfor %}{% for unused in range(5 - rows|length) %}
+    <div class="row">
+      {% for letter in range(5) %}<span class="tile"></span>{% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+  {% if game.status == 'active' %}
+  <form
+    method="post"
+    action="{{ url_for('submit_guess', game_id=game.id) }}"
+    class="guess"
+  >
+    <label
+      >Your guess<input
+        name="guess"
+        maxlength="5"
+        minlength="5"
+        pattern="[A-Za-z]{5}"
+        required
+        autofocus
+        autocomplete="off" /></label
+    ><button>Submit guess</button>
+    <p>{{ game.guesses_used }} of 5 guesses used</p>
+  </form>
+  {% else %}
+  <div class="end-game">
+    {% if game.status == 'won' %}
+    <p class="flash success">Congratulations - you guessed the word!</p>
+    {% else %}
+    <p class="flash error">Better luck next time. The word was {{ game.answer }}.</p>
+    {% endif %}
+    <form method="post" action="{{ url_for('acknowledge_game', game_id=game.id) }}">
+      <button>OK</button>
+    </form>
+  </div>
+  {% endif %}
+</section>
+{% elif games_today < 3 %}
+<section class="card start">
+  <h2>Ready for a new word?</h2>
+  <p>
+    You can play {{ 3 - games_today }} more game{{ '' if 3 - games_today == 1
+    else 's' }} today.
+  </p>
+  <form method="post" action="{{ url_for('start_game') }}">
+    <button>Start game</button>
+  </form>
+</section>
+{% else %}
+<section class="card start">
+  <h2>That’s all for today.</h2>
+  <p>Come back tomorrow for three more words.</p>
+</section>
+{% endif %}{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}{% block content %}
+<section class="card auth">
+  <p class="eyebrow">WELCOME BACK</p>
+  <h1>Guess the word.</h1>
+  <form method="post">
+    <label>Username<input name="username" required autofocus /></label
+    ><label>Password<input name="password" type="password" required /></label
+    ><button>Log in</button>
+  </form>
+  <p>New player? <a href="{{ url_for('register') }}">Create an account</a></p>
+  <p class="hint">Admins are created directly in the database.</p>
+</section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}{% block content %}
+<section class="card auth">
+  <p class="eyebrow">JOIN THE GAME</p>
+  <h1>Create account</h1>
+  <form method="post">
+    <label
+      >Username<input
+        name="username"
+        required
+        pattern="(?=.*[a-z])(?=.*[A-Z])[A-Za-z]{5,}"
+        title="At least 5 letters with upper and lower case" /></label
+    ><label>Password<input name="password" type="password" required /></label>
+    <p class="hint">
+      Username: 5+ letters with both upper and lower case. Password: 5+
+      characters, with a letter, number, and $, %, or *.
+    </p>
+    <button>Register</button>
+  </form>
+  <p>Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+</section>
+{% endblock %}

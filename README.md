@@ -1,6 +1,6 @@
 # Guess The Word
 
-A web-based "Guess the Word" game (inspired by Wordle) built using **Flask** and **SQLite**. This project allows users to register, play up to three games a day, and administrators to view game reports. 
+A web-based "Guess the Word" game built using **Flask** and **SQLite**. This project allows users to register, play up to three games a day, and administrators to view game reports. 
 
 ## Features
 - **User Accounts**: Register and login as a player.

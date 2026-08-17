@@ -60,9 +60,4 @@ flask --app app shell
 ```
 Now log in as `AdminUser` (password: `Admin1$`) to access the admin dashboard at `/admin/reports`.
 
-## Running Tests
 
-To run the automated test suite, use the following command:
-```bash
-python3 -m unittest discover -s tests
-```
